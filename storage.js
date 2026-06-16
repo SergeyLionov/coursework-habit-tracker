@@ -5,7 +5,6 @@ const HabitStorage = {
     saveHabits(habits) {
         localStorage.setItem('habits', JSON.stringify(habits));
     },
-    // Управление темой оформления
     getTheme() {
         return localStorage.getItem('theme') || 'light';
     },
