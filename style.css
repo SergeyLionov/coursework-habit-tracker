@@ -1,0 +1,163 @@
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --primary: #4a90e2;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+    --gray: #95a5a6;
+    --border-color: #dddddd;
+    --modal-overlay: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1e1e24;
+    --card-bg: #2a2a32;
+    --text-color: #f4f7f6;
+    --border-color: #444448;
+    --gray: #7f8c8d;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 { margin: 0; color: var(--text-color); }
+h1 { color: var(--primary); }
+
+.btn-theme {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+form { display: flex; gap: 10px; }
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s, opacity 0.2s;
+}
+button:active { transform: scale(0.95); }
+
+.btn-success { background-color: var(--success); color: white; }
+.btn-danger { background-color: var(--danger); color: white; }
+.btn-primary { background-color: var(--primary); color: white; }
+
+.error-text { color: var(--danger); font-size: 14px; margin-top: 5px; }
+.habit-row { border-bottom: 1px solid var(--border-color); padding: 15px 0; }
+.habit-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.habit-controls button { padding: 6px 10px; font-size: 12px; margin-left: 5px; }
+
+.calendar-grid { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; margin-top: 10px;}
+.day-cell { display: flex; flex-direction: column; align-items: center; font-size: 12px; min-width: 45px; }
+
+.check-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--gray);
+    background: transparent;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.6); opacity: 0.5; }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.check-btn.checked {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+.check-btn.checked-anim {
+    animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stats-box { margin-top: 12px; font-size: 13px; color: var(--gray); display: flex; gap: 15px; }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: var(--modal-overlay);
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%; max-width: 400px;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+.close-modal {
+    position: absolute; right: 15px; top: 10px;
+    font-size: 28px; cursor: pointer; color: var(--gray);
+}
+.close-modal:hover { color: var(--danger); }
+
+.month-grid-header {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; font-weight: bold; margin-top: 15px; margin-bottom: 5px;
+    color: var(--primary);
+}
+.month-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px;
+}
+.month-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    border-radius: 6px; font-size: 14px; border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+}
+.month-day.completed {
+    background-color: var(--success); color: white; border-color: var(--success);
+    font-weight: bold;
+}
+.month-day.empty { border: none; background: transparent; }
