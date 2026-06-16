@@ -46,7 +46,7 @@ const HabitTracker = {
                 habit.history = habit.history.filter(d => d !== dateStr);
             } else {
                 habit.history.push(dateStr);
-                isAdded = true; // Флаг, чтобы знать, запускать ли анимацию успеха
+                isAdded = true;
             }
             HabitStorage.saveHabits(habits);
         }
